@@ -1,5 +1,5 @@
 
-#include <Penelope.h>
+#include <Penelope.hpp>
 
 class Sandbox : public Penelope::Application {
 public:

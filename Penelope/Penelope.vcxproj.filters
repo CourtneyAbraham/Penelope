@@ -15,21 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Penelope\Core.h">
+    <ClInclude Include="src\Penelope\Core.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Penelope\Application.h">
+    <ClInclude Include="src\Penelope\Application.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Penelope.h">
+    <ClInclude Include="src\Penelope.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Penelope\EntryPoint.h">
+    <ClInclude Include="src\Penelope\EntryPoint.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Penelope\Log.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Penelope\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Penelope\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

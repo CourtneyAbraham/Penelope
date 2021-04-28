@@ -11,13 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Penelope.h" />
-    <ClInclude Include="src\Penelope\Application.h" />
-    <ClInclude Include="src\Penelope\Core.h" />
-    <ClInclude Include="src\Penelope\EntryPoint.h" />
+    <ClInclude Include="src\Penelope.hpp" />
+    <ClInclude Include="src\Penelope\Application.hpp" />
+    <ClInclude Include="src\Penelope\Core.hpp" />
+    <ClInclude Include="src\Penelope\EntryPoint.hpp" />
+    <ClInclude Include="src\Penelope\Log.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Penelope\Application.cpp" />
+    <ClCompile Include="src\Penelope\Log.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -68,6 +70,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;PENELOPE_PLATFORM_WINDOWS;PENELOPE_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Penelope\vendor\spdlog\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -82,6 +85,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;PENELOPE_PLATFORM_WINDOWS;PENELOPE_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Penelope\vendor\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
