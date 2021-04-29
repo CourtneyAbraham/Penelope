@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef PENELOPE_PLATFORM_WINDOWS
+#ifdef PN_PLATFORM_WINDOWS
 
 extern Penelope::Application* Penelope::CreateApplication();
 

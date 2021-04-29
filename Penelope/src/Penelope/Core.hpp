@@ -1,10 +1,10 @@
 #pragma once
 
-#ifdef PENELOPE_PLATFORM_WINDOWS
-#	ifdef PENELOPE_BUILD_DLL
-#		define PENELOPE_API __declspec(dllexport)
+#ifdef PN_PLATFORM_WINDOWS
+#	ifdef PN_BUILD_DLL
+#		define PN_API __declspec(dllexport)
 #	else
-#		define PENELOPE_API __declspec(dllimport)
+#		define PN_API __declspec(dllimport)
 #	endif
 #else
 #	error Penelope only supports windows

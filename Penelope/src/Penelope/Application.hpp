@@ -4,7 +4,7 @@
 
 namespace Penelope {
 
-	class PENELOPE_API Application {
+	class PN_API Application {
 	public:
 		Application();
 		virtual ~Application();
