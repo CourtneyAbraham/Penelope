@@ -17,6 +17,9 @@ project "Penelope"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "pnpch.hpp"
+	pchsource "%{prj.name}/src/pnpch.cpp"
+
 	files {
 		"%{prj.name}/src/**.hpp",
 		"%{prj.name}/src/**.cpp",
@@ -25,6 +28,7 @@ project "Penelope"
 	}
 
 	includedirs {
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 

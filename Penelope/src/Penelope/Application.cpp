@@ -1,4 +1,9 @@
+#include "pnpch.hpp"
+
 #include "Application.hpp"
+
+#include "Penelope/Log.hpp"
+#include "Penelope/Events/ApplicationEvent.hpp"
 
 namespace Penelope {
 
@@ -10,6 +15,7 @@ namespace Penelope {
 	}
 
 	void Application::Run() {
+
 		while (true);
 	}
 

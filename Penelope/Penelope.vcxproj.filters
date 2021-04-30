@@ -4,6 +4,9 @@
     <Filter Include="Penelope">
       <UniqueIdentifier>{7D08F8B6-69D5-52C2-92EE-406A7E1A8850}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Penelope\Events">
+      <UniqueIdentifier>{C1A53966-2D31-A72A-3642-2A1FA24C032B}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Penelope.hpp" />
@@ -16,9 +19,22 @@
     <ClInclude Include="src\Penelope\EntryPoint.hpp">
       <Filter>Penelope</Filter>
     </ClInclude>
+    <ClInclude Include="src\Penelope\Events\ApplicationEvent.hpp">
+      <Filter>Penelope\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Penelope\Events\Event.hpp">
+      <Filter>Penelope\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Penelope\Events\KeyEvent.hpp">
+      <Filter>Penelope\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Penelope\Events\MouseEvent.hpp">
+      <Filter>Penelope\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Penelope\Log.hpp">
       <Filter>Penelope</Filter>
     </ClInclude>
+    <ClInclude Include="src\pnpch.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Penelope\Application.cpp">
@@ -27,5 +43,6 @@
     <ClCompile Include="src\Penelope\Log.cpp">
       <Filter>Penelope</Filter>
     </ClCompile>
+    <ClCompile Include="src\pnpch.cpp" />
   </ItemGroup>
 </Project>
