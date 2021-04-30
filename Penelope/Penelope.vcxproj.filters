@@ -7,6 +7,12 @@
     <Filter Include="Penelope\Events">
       <UniqueIdentifier>{C1A53966-2D31-A72A-3642-2A1FA24C032B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platforms">
+      <UniqueIdentifier>{DDACA145-4917-56BC-9255-0762FEFE3311}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platforms\Windows">
+      <UniqueIdentifier>{17E40808-83FA-069E-CC71-92BF38C7D725}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Penelope.hpp" />
@@ -34,6 +40,12 @@
     <ClInclude Include="src\Penelope\Log.hpp">
       <Filter>Penelope</Filter>
     </ClInclude>
+    <ClInclude Include="src\Penelope\Window.hpp">
+      <Filter>Penelope</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platforms\Windows\WindowsWindow.hpp">
+      <Filter>Platforms\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\pnpch.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="src\Penelope\Log.cpp">
       <Filter>Penelope</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platforms\Windows\WindowsWindow.cpp">
+      <Filter>Platforms\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\pnpch.cpp" />
   </ItemGroup>

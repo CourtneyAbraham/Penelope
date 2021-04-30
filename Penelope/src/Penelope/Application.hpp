@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Core.hpp"
+#include "Penelope/Core.hpp"
+#include "Penelope/Window.hpp"
 
 namespace Penelope {
 
@@ -8,7 +9,12 @@ namespace Penelope {
 	public:
 		Application();
 		virtual ~Application();
+
 		void Run();
+	private:
+		std::unique_ptr<Window> m_Window;
+
+		bool m_Running = true;
 	};
 
 	// To be define by client

@@ -79,7 +79,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pnpch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>PN_PLATFORM_WINDOWS;PN_BUILD_DLL;PN_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>PN_PLATFORM_WINDOWS;PN_BUILD_DLL;PN_DEBUG;PN_ENABLE_ASSERTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -154,11 +154,14 @@
     <ClInclude Include="src\Penelope\Events\KeyEvent.hpp" />
     <ClInclude Include="src\Penelope\Events\MouseEvent.hpp" />
     <ClInclude Include="src\Penelope\Log.hpp" />
+    <ClInclude Include="src\Penelope\Window.hpp" />
+    <ClInclude Include="src\Platforms\Windows\WindowsWindow.hpp" />
     <ClInclude Include="src\pnpch.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Penelope\Application.cpp" />
     <ClCompile Include="src\Penelope\Log.cpp" />
+    <ClCompile Include="src\Platforms\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\pnpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

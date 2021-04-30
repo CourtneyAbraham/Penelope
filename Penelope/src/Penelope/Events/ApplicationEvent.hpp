@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Event.hpp"
+#include "Penelope/Events/Event.hpp"
 
 namespace Penelope {
 	class PENELOPE_API WindowResizeEvent : public Event {

@@ -58,7 +58,10 @@ project "Penelope"
 		}
 		
 	filter "configurations:Debug"
-		defines "PN_DEBUG"
+		defines {
+			"PN_DEBUG",
+			"PN_ENABLE_ASSERTS"
+		}
 		symbols "On"
 	filter "configurations:Release"
 		defines "PN_RELEASE"
@@ -101,7 +104,10 @@ project "Sandbox"
 		}
 		
 	filter "configurations:Debug"
-		defines "PN_DEBUG"
+		defines {
+			"PN_DEBUG",
+			"PN_ENABLE_ASSERTS"
+		}
 		symbols "On"
 	filter "configurations:Release"
 		defines "PN_RELEASE"
