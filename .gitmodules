@@ -1,3 +1,6 @@
 [submodule "Penelope/vendor/spdlog"]
 	path = Penelope/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Penelope/vendor/GLFW"]
+	path = Penelope/vendor/GLFW
+	url = https://github.com/CourtneyAbraham/glfw

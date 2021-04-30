@@ -9,6 +9,11 @@ workspace "Penelope"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Penelope/vendor/GLFW/include"
+
+include "Penelope/vendor/GLFW"
+
 project "Penelope"
 	location "Penelope"
 	kind "SharedLib"
@@ -29,7 +34,13 @@ project "Penelope"
 
 	includedirs {
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links {
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
