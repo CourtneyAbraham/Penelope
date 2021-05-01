@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -109,6 +110,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -132,6 +134,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -154,6 +157,8 @@
     <ClInclude Include="src\Penelope\Events\Event.hpp" />
     <ClInclude Include="src\Penelope\Events\KeyEvent.hpp" />
     <ClInclude Include="src\Penelope\Events\MouseEvent.hpp" />
+    <ClInclude Include="src\Penelope\Layer.hpp" />
+    <ClInclude Include="src\Penelope\LayerStack.hpp" />
     <ClInclude Include="src\Penelope\Log.hpp" />
     <ClInclude Include="src\Penelope\Window.hpp" />
     <ClInclude Include="src\Platforms\Windows\WindowsWindow.hpp" />
@@ -161,6 +166,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Penelope\Application.cpp" />
+    <ClCompile Include="src\Penelope\Layer.cpp" />
+    <ClCompile Include="src\Penelope\LayerStack.cpp" />
     <ClCompile Include="src\Penelope\Log.cpp" />
     <ClCompile Include="src\Platforms\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\pnpch.cpp">
