@@ -149,6 +149,7 @@
     <ClInclude Include="src\Penelope\Application.hpp" />
     <ClInclude Include="src\Penelope\Core.hpp" />
     <ClInclude Include="src\Penelope\EntryPoint.hpp" />
+    <ClInclude Include="src\Penelope\Events\AllEvents.hpp" />
     <ClInclude Include="src\Penelope\Events\ApplicationEvent.hpp" />
     <ClInclude Include="src\Penelope\Events\Event.hpp" />
     <ClInclude Include="src\Penelope\Events\KeyEvent.hpp" />

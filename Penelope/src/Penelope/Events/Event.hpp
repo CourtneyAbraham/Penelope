@@ -5,7 +5,7 @@
 namespace Penelope {
 
 	// Events are blocking
-	// TODO Event queue/buffer
+	// TODO: Event queue/buffer
 
 	enum class EventType {
 		None = 0,

@@ -2,6 +2,7 @@
 
 #include "Penelope/Core.hpp"
 #include "Penelope/Window.hpp"
+#include "Penelope/Events/ApplicationEvent.hpp"
 
 namespace Penelope {
 
@@ -11,7 +12,11 @@ namespace Penelope {
 		virtual ~Application();
 
 		void Run();
+
+		void OnEvent(Event& event);
 	private:
+		bool OnWindowClose(WindowCloseEvent& event);
+
 		std::unique_ptr<Window> m_Window;
 
 		bool m_Running = true;

@@ -23,7 +23,7 @@ namespace Penelope {
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "KeyPressedEvent: " << m_Keycode << " (" << m_RepeatCount << " repeats)";
-			return ss;
+			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(KeyPressed)
@@ -39,7 +39,7 @@ namespace Penelope {
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "KeyReleasedEvent: " << m_Keycode;
-			return ss;
+			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(KeyReleased)
