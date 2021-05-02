@@ -4,3 +4,6 @@
 [submodule "Penelope/vendor/GLFW"]
 	path = Penelope/vendor/GLFW
 	url = https://github.com/CourtneyAbraham/glfw
+[submodule "Penelope/vendor/ImGui"]
+	path = Penelope/vendor/ImGui
+	url = https://github.com/CourtneyAbraham/imgui/

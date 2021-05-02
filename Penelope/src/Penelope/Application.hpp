@@ -18,6 +18,11 @@ namespace Penelope {
 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* overlay);
+
+		inline Window& GetWindow() { return *m_Window; }
+
+		inline static Application& Get() { return *s_Instance; }
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& event);
 
@@ -26,6 +31,8 @@ namespace Penelope {
 		bool m_Running = true;
 
 		LayerStack m_LayerStack;
+
+		static Application* s_Instance;
 	};
 
 	// To be define by client
