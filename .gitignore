@@ -349,6 +349,14 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
+**/bin/
+!vendor/premake/bin/
 bin-int/
 
-Penelope/vendor/
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+
+**/imgui.ini
