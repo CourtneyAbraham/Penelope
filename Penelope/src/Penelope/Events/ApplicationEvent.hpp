@@ -10,7 +10,7 @@ namespace Penelope {
 		inline unsigned int GetWidth() { return m_Width; }
 		inline unsigned int GetHeight() { return m_Height; }
 
-		std::string ToString() {
+		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
 			return ss.str();
@@ -36,7 +36,7 @@ namespace Penelope {
 		AppTickEvent() {}
 
 		EVENT_CLASS_TYPE(AppTick)
-			EVENT_CLASS_CATEGORY(EventCategoryApplication)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
 	class PENELOPE_API AppUpdateEvent : public Event {

@@ -11,8 +11,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Penelope/vendor/GLFW/include"
+IncludeDir["Glad"] = "Penelope/vendor/Glad/include"
 
 include "Penelope/vendor/GLFW"
+include "Penelope/vendor/Glad"
 
 project "Penelope"
 	location "Penelope"
@@ -35,11 +37,13 @@ project "Penelope"
 	includedirs {
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links {
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -50,7 +54,8 @@ project "Penelope"
 
 		defines {
 			"PN_PLATFORM_WINDOWS",
-			"PN_BUILD_DLL"
+			"PN_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands {

@@ -3,6 +3,9 @@
 #include "WindowsWindow.hpp"
 #include "Penelope/Events/AllEvents.hpp"
 
+#include <Glad/glad.h>
+
+
 namespace Penelope {
 	static bool s_GLFWInitialised = false;
 
@@ -30,7 +33,7 @@ namespace Penelope {
 
 		if (!s_GLFWInitialised) {
 
-			// TODO Terminate GLFW on system shutdown
+			// TODO: Terminate GLFW on system shutdown
 			int success = glfwInit();
 			PN_CORE_ASSERT(success, "Could not initialise GLFW!");
 
@@ -41,6 +44,10 @@ namespace Penelope {
 
 		m_Window = glfwCreateWindow(properties.Width, properties.Height, properties.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+
+		PN_CORE_ASSERT(status, "Failed to initialise Glad!");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

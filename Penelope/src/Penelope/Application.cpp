@@ -1,6 +1,6 @@
 #include "pnpch.hpp"
 
-#include "Application.hpp"
+#include "Penelope/Application.hpp"
 
 #include "Penelope/Log.hpp"
 #include "Penelope/Events/ApplicationEvent.hpp"
