@@ -8,19 +8,21 @@ namespace Penelope {
 	class WindowsWindow : public Window {
 	public:
 		WindowsWindow(const WindowProperties& properties);
-		virtual ~WindowsWindow();
+		~WindowsWindow();
 
 		void OnUpdate() override;
 
 		inline unsigned int GetWidth() const override { return m_Data.Width; }
 		inline unsigned int GetHeight() const override { return m_Data.Height; }
 
-		const char* GetClipboardText() override { return glfwGetClipboardString(m_Window); }
-		void SetClipboardText(const char* text) override { glfwSetClipboardString(m_Window, text); }
+		const char* GetClipboardText(void* user_data) override { return glfwGetClipboardString(m_Window); }
+		void SetClipboardText(void* user_data, const char* text) override { glfwSetClipboardString(m_Window, text); }
 
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
+
+		inline void* GetNativeWindow() const override { return m_Window; }
 
 	private:
 		virtual void Init(const WindowProperties& properties);

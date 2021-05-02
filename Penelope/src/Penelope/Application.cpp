@@ -1,10 +1,9 @@
 #include "pnpch.hpp"
 
 #include "Penelope/Application.hpp"
-#include "Penelope/Core.hpp"
 
-#include "Penelope/Log.hpp"
-#include "Penelope/Events/ApplicationEvent.hpp"
+#include "Penelope/Input.hpp"
+
 #include "glad/glad.h"
 
 namespace Penelope {

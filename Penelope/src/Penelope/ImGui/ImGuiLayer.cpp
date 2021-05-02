@@ -2,11 +2,12 @@
 
 #include "ImGuiLayer.hpp"
 
-#include <GLFW/glfw3.h>
 #include "Platforms/OpenGL/ImGuiOpenGLRenderer.h"
 
 #include "Penelope/Application.hpp"
 #include "Penelope/Core.hpp"
+#include "Penelope/Keycodes.hpp"
+#include "Platforms/Windows/WindowsWindow.hpp"
 
 namespace Penelope {
 
@@ -26,33 +27,30 @@ namespace Penelope {
 		io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
 		io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;
 
-		io.KeyMap[ImGuiKey_Tab] = GLFW_KEY_TAB;
-		io.KeyMap[ImGuiKey_LeftArrow] = GLFW_KEY_LEFT;
-		io.KeyMap[ImGuiKey_RightArrow] = GLFW_KEY_RIGHT;
-		io.KeyMap[ImGuiKey_UpArrow] = GLFW_KEY_UP;
-		io.KeyMap[ImGuiKey_DownArrow] = GLFW_KEY_DOWN;
-		io.KeyMap[ImGuiKey_PageUp] = GLFW_KEY_PAGE_UP;
-		io.KeyMap[ImGuiKey_PageDown] = GLFW_KEY_PAGE_DOWN;
-		io.KeyMap[ImGuiKey_Home] = GLFW_KEY_HOME;
-		io.KeyMap[ImGuiKey_End] = GLFW_KEY_END;
-		io.KeyMap[ImGuiKey_Insert] = GLFW_KEY_INSERT;
-		io.KeyMap[ImGuiKey_Delete] = GLFW_KEY_DELETE;
-		io.KeyMap[ImGuiKey_Backspace] = GLFW_KEY_BACKSPACE;
-		io.KeyMap[ImGuiKey_Space] = GLFW_KEY_SPACE;
-		io.KeyMap[ImGuiKey_Enter] = GLFW_KEY_ENTER;
-		io.KeyMap[ImGuiKey_Escape] = GLFW_KEY_ESCAPE;
-		io.KeyMap[ImGuiKey_KeyPadEnter] = GLFW_KEY_KP_ENTER;
-		io.KeyMap[ImGuiKey_A] = GLFW_KEY_A;
-		io.KeyMap[ImGuiKey_C] = GLFW_KEY_C;
-		io.KeyMap[ImGuiKey_V] = GLFW_KEY_V;
-		io.KeyMap[ImGuiKey_X] = GLFW_KEY_X;
-		io.KeyMap[ImGuiKey_Y] = GLFW_KEY_Y;
-		io.KeyMap[ImGuiKey_Z] = GLFW_KEY_Z;
+		io.KeyMap[ImGuiKey_Tab] = PN_KEY_TAB;
+		io.KeyMap[ImGuiKey_LeftArrow] = PN_KEY_LEFT;
+		io.KeyMap[ImGuiKey_RightArrow] = PN_KEY_RIGHT;
+		io.KeyMap[ImGuiKey_UpArrow] = PN_KEY_UP;
+		io.KeyMap[ImGuiKey_DownArrow] = PN_KEY_DOWN;
+		io.KeyMap[ImGuiKey_PageUp] = PN_KEY_PAGE_UP;
+		io.KeyMap[ImGuiKey_PageDown] = PN_KEY_PAGE_DOWN;
+		io.KeyMap[ImGuiKey_Home] = PN_KEY_HOME;
+		io.KeyMap[ImGuiKey_End] = PN_KEY_END;
+		io.KeyMap[ImGuiKey_Insert] = PN_KEY_INSERT;
+		io.KeyMap[ImGuiKey_Delete] = PN_KEY_DELETE;
+		io.KeyMap[ImGuiKey_Backspace] = PN_KEY_BACKSPACE;
+		io.KeyMap[ImGuiKey_Space] = PN_KEY_SPACE;
+		io.KeyMap[ImGuiKey_Enter] = PN_KEY_ENTER;
+		io.KeyMap[ImGuiKey_Escape] = PN_KEY_ESCAPE;
+		io.KeyMap[ImGuiKey_KeyPadEnter] = PN_KEY_KP_ENTER;
+		io.KeyMap[ImGuiKey_A] = PN_KEY_A;
+		io.KeyMap[ImGuiKey_C] = PN_KEY_C;
+		io.KeyMap[ImGuiKey_V] = PN_KEY_V;
+		io.KeyMap[ImGuiKey_X] = PN_KEY_X;
+		io.KeyMap[ImGuiKey_Y] = PN_KEY_Y;
+		io.KeyMap[ImGuiKey_Z] = PN_KEY_Z;
 
 		ImGui_ImplOpenGL3_Init("#version 460");
-
-		//io.GetClipboardTextFn = ;
-		//io.SetClipboardTextFn = Application::Get().GetWindow().SetClipboardText;
 
 	}
 
@@ -122,10 +120,10 @@ namespace Penelope {
 		ImGuiIO& io = ImGui::GetIO();
 		io.KeysDown[event.GetKeyCode()] = true;
 
-		io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
-		io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
-		io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
-		io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
+		io.KeyCtrl = io.KeysDown[PN_KEY_LEFT_CONTROL] || io.KeysDown[PN_KEY_RIGHT_CONTROL];
+		io.KeyShift = io.KeysDown[PN_KEY_LEFT_SHIFT] || io.KeysDown[PN_KEY_RIGHT_SHIFT];
+		io.KeyAlt = io.KeysDown[PN_KEY_LEFT_ALT] || io.KeysDown[PN_KEY_RIGHT_ALT];
+		io.KeySuper = io.KeysDown[PN_KEY_LEFT_SUPER] || io.KeysDown[PN_KEY_RIGHT_SUPER];
 
 		if (io.WantCaptureKeyboard) {
 			return true;
@@ -138,10 +136,10 @@ namespace Penelope {
 		ImGuiIO& io = ImGui::GetIO();
 		io.KeysDown[event.GetKeyCode()] = false;
 
-		io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
-		io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
-		io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
-		io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
+		io.KeyCtrl = io.KeysDown[PN_KEY_LEFT_CONTROL] || io.KeysDown[PN_KEY_RIGHT_CONTROL];
+		io.KeyShift = io.KeysDown[PN_KEY_LEFT_SHIFT] || io.KeysDown[PN_KEY_RIGHT_SHIFT];
+		io.KeyAlt = io.KeysDown[PN_KEY_LEFT_ALT] || io.KeysDown[PN_KEY_RIGHT_ALT];
+		io.KeySuper = io.KeysDown[PN_KEY_LEFT_SUPER] || io.KeysDown[PN_KEY_RIGHT_SUPER];
 
 		if (io.WantCaptureKeyboard) {
 			return true;
@@ -190,6 +188,6 @@ namespace Penelope {
 	}
 
 	const char* ImGuiLayer::GetClipboardString(void*) {
-		return Application::Get().GetWindow().GetClipboardText();
+		return Application::Get().GetWindow().GetClipboardText((void*)0);
 	}
 }

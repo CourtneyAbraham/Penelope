@@ -14,15 +14,19 @@ IncludeDir["GLFW"] = "Penelope/vendor/GLFW/include"
 IncludeDir["Glad"] = "Penelope/vendor/Glad/include"
 IncludeDir["ImGui"] = "Penelope/vendor/ImGui"
 
-include "Penelope/vendor/GLFW"
-include "Penelope/vendor/Glad"
-include "Penelope/vendor/ImGui"
+group "Dependencies"
 
+	include "Penelope/vendor/GLFW"
+	include "Penelope/vendor/Glad"
+	include "Penelope/vendor/ImGui"
+
+group ""
 
 project "Penelope"
 	location "Penelope"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "Off"
 	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -54,7 +58,6 @@ project "Penelope"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines {
@@ -64,7 +67,7 @@ project "Penelope"
 		}
 
 		postbuildcommands {
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .."/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .."/Sandbox/\"")
 		}
 		
 	filter "configurations:Debug"
@@ -72,21 +75,22 @@ project "Penelope"
 			"PN_DEBUG",
 			"PN_ENABLE_ASSERTS"
 		}
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 	filter "configurations:Release"
 		defines "PN_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 	filter "configurations:Dist"
 		defines "PN_DIST"
-		buildoptions "/MD"
-		symbols "On"
+		runtime "Release"
+		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "Off"
 	
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -109,7 +113,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines {
@@ -121,13 +124,13 @@ project "Sandbox"
 			"PN_DEBUG",
 			"PN_ENABLE_ASSERTS"
 		}
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 	filter "configurations:Release"
 		defines "PN_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 	filter "configurations:Dist"
 		defines "PN_DIST"
-		buildoptions "/MD"
-		symbols "On"
+		runtime "Release"
+		optimize "On"
