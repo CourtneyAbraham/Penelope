@@ -9,3 +9,6 @@
 	ignore = dirty
 	path = Penelope/vendor/ImGui
 	url = https://github.com/CourtneyAbraham/imgui/
+[submodule "Penelope/vendor/glm"]
+	path = Penelope/vendor/glm
+	url = https://github.com/g-truc/glm
