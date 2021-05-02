@@ -2,6 +2,7 @@
 	path = Penelope/vendor/spdlog
 	url = https://github.com/gabime/spdlog
 [submodule "Penelope/vendor/GLFW"]
+	ignore = dirty
 	path = Penelope/vendor/GLFW
 	url = https://github.com/CourtneyAbraham/glfw
 [submodule "Penelope/vendor/ImGui"]
