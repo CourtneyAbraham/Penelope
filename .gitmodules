@@ -6,5 +6,6 @@
 	path = Penelope/vendor/GLFW
 	url = https://github.com/CourtneyAbraham/glfw
 [submodule "Penelope/vendor/ImGui"]
+	ignore = dirty
 	path = Penelope/vendor/ImGui
 	url = https://github.com/CourtneyAbraham/imgui/
