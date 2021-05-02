@@ -4,6 +4,8 @@
 
 #include "Penelope/Input.hpp"
 
+#include "glad/glad.h"
+
 namespace Penelope {
 
 	Application* Application::s_Instance = nullptr;
