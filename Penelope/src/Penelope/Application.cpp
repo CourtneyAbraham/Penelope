@@ -34,7 +34,7 @@ namespace Penelope {
 
 		dispatcher.Dispatch<WindowCloseEvent>(PN_BIND_EVENT_FN(Application::OnWindowClose));
 
-		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); ) {
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
 			(*--it)->OnEvent(event);
 
 			if (event.Handled) {
@@ -47,6 +47,9 @@ namespace Penelope {
 	void Application::Run() {
 
 		while (m_Running) {
+
+			glClearColor(26.0f / 255.0f, 26.0f / 255.0f, 26.0f / 255.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
 
 			for (Layer* layer : m_LayerStack) {
 				layer->OnUpdate();
