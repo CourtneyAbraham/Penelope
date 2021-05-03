@@ -13,6 +13,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Penelope/vendor/GLFW/include"
 IncludeDir["Glad"] = "Penelope/vendor/Glad/include"
 IncludeDir["ImGui"] = "Penelope/vendor/ImGui"
+IncludeDir["glm"] = "Penelope/vendor/ImGui"
 
 group "Dependencies"
 
@@ -46,7 +47,8 @@ project "Penelope"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links {
@@ -104,7 +106,8 @@ project "Sandbox"
 	
 	includedirs {
 		"Penelope/vendor/spdlog/include",
-		"Penelope/src"
+		"Penelope/src",
+		"Penelope/vendor"
 	}
 
 	links {

@@ -12,23 +12,11 @@ namespace Penelope {
 
 		void OnAttach() override;
 		void OnDetach() override;
-		void OnUpdate() override;
-		void OnEvent(Event& event) override;
+		void OnImGuiRender() override;
+		void Begin();
+		void End();
 
 	private:
-		bool OnWindowResize(WindowResizeEvent& event);
-
-		bool OnKeyTyped(KeyTypedEvent& event);
-		bool OnKeyPressed(KeyPressedEvent& event);
-		bool OnKeyReleased(KeyReleasedEvent& event);
-
-		bool OnMouseButtonPressed(MouseButtonPressedEvent& event);
-		bool OnMouseButtonReleased(MouseButtonReleasedEvent& event);
-		bool OnMouseMoved(MouseMovedEvent& event);
-
-		bool OnMouseScrolled(MouseScrolledEvent& event);
-
-		const char* ImGuiLayer::GetClipboardString(void*);
 
 		float m_Time = 0.0f;
 

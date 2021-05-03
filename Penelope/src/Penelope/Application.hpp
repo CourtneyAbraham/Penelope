@@ -4,6 +4,7 @@
 #include "Penelope/Window.hpp"
 #include "Penelope/Events/ApplicationEvent.hpp"
 #include "Penelope/LayerStack.hpp"
+#include "Penelope/ImGui/ImGuiLayer.hpp"
 
 namespace Penelope {
 
@@ -27,6 +28,7 @@ namespace Penelope {
 		bool OnWindowClose(WindowCloseEvent& event);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 
 		bool m_Running = true;
 
