@@ -4,7 +4,7 @@
 #include "Penelope/Events/AllEvents.hpp"
 
 namespace Penelope {
-	class PENELOPE_API ImGuiLayer : public Layer {
+	class ImGuiLayer : public Layer {
 
 	public:
 		ImGuiLayer();

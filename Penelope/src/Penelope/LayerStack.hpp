@@ -7,7 +7,7 @@
 
 namespace Penelope {
 
-	class PENELOPE_API LayerStack {
+	class LayerStack {
 	public:
 		LayerStack();
 		~LayerStack();

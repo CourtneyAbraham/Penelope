@@ -18,7 +18,7 @@ namespace Penelope {
 			: Title(title), Width(width), Height(height) {}
 	};
 
-	class PENELOPE_API Window {
+	class Window {
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 
