@@ -1,9 +1,9 @@
 
 #include <Penelope.hpp>
 
-class ExampleLayer : public Penelope::Layer {
+class EditorLayer : public Penelope::Layer {
 public:
-	ExampleLayer() : Layer("Example") {
+	EditorLayer() : Layer("Editor") {
 
 	}
 
@@ -17,16 +17,16 @@ public:
 	}
 };
 
-class Sandbox : public Penelope::Application {
+class Editor : public Penelope::Application {
 public:
-	Sandbox() {
-		PushLayer(new ExampleLayer());
+	Editor() {
+		PushLayer(new EditorLayer());
 	}
-	~Sandbox() {
+	~Editor() {
 
 	}
 };
 
 Penelope::Application* Penelope::CreateApplication() {
-	return new Sandbox();
+	return new Editor();
 }
