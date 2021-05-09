@@ -89,7 +89,7 @@ project "Penelope"
 
 project "Editor"
 	location "Editor"
-	kind "ConsoleApp"
+	kind "WindowedApp"
 	language "C++"
 	cppdialect "C++17"
 	staticruntime "On"
@@ -116,6 +116,8 @@ project "Editor"
 
 	filter "system:windows"
 		systemversion "latest"
+		entrypoint "mainCRTStartup"
+
 
 		defines {
 			"PN_PLATFORM_WINDOWS"

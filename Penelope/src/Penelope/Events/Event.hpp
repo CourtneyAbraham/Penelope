@@ -12,7 +12,8 @@ namespace Penelope {
 		WindowClose, WindowResize, WindowFocus, WindowFocusLost, WindowMoved,
 		AppTick, AppUpdate, AppRender,
 		KeyPressed, KeyReleased, KeyTyped,
-		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
+		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled,
+		LogMessage
 	};
 
 	enum EventCategory {
@@ -22,6 +23,7 @@ namespace Penelope {
 		EventCategoryKeyboard    = BIT(2),
 		EventCategoryMouse       = BIT(3),
 		EventCategoryMouseButton = BIT(4),
+		EventCategoryLog = BIT(5)
 	};
 
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType(){ return EventType::##type; }\
