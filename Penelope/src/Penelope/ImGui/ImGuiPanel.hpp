@@ -12,7 +12,7 @@ namespace Penelope {
 
 		virtual void Draw() = 0;
 
-	protected:
+	public:
 		const char* m_Name;
 		ImGuiID m_ID;
 	};

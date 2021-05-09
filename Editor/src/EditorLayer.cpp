@@ -1,6 +1,8 @@
 
 #include "EditorLayer.hpp"
+#include "Penelope.hpp"
 #include <iostream>
+#include <string>
 
 #include <ImGui\imgui_internal.h>
 #include "EditorPanels/AllEditorPanels.hpp"
@@ -38,7 +40,7 @@ void EditorLayer::OnImGuiRender() {
 
 	ImGui::End();
 
-	for (Penelope::ImGuiPanel* panel : m_EditorPanels) {
+	for (const auto& [name, panel] : m_EditorPanels) {
 		panel->Draw();
 	}
 }
@@ -66,38 +68,40 @@ void EditorLayer::GenerateDockingSpace() {
 		ImGui::DockBuilderGetNode(m_DockingIDs["Viewport"])->LocalFlags |= ImGuiDockNodeFlags_HiddenTabBar;
 		ImGui::DockBuilderFinish(dockspaceID);
 
-		PushEditorPanel(new LogPanel("Log"));
-		PushEditorPanel(new PropertiesPanel("Properties"));
-		PushEditorPanel(new HierarchyPanel("Hierarchy"));
-		PushEditorPanel(new ViewportPanel("Viewport"));
+		PushEditorPanel<LogPanel>("Log");
+		PushEditorPanel<PropertiesPanel>("Properties");
+		PushEditorPanel<HierarchyPanel>("Hierarchy");
+		PushEditorPanel<ViewportPanel>("Viewport");
 	}
 }
 
 void EditorLayer::OnEvent(Penelope::Event& event) {
-
-	if (event.GetEventType() != Penelope::EventType::MouseMoved) {
-		PN_CORE_WARN(event.ToString());
-	}
-
 	Penelope::EventDispatcher dispatcher(event);
 
 	dispatcher.Dispatch<Penelope::LogMessageEvent>(PN_BIND_EVENT_FN(EditorLayer::OnLogMessageEvent));
 }
 
 bool EditorLayer::OnLogMessageEvent(Penelope::LogMessageEvent event) {
-	if (m_EditorPanels.size() == 0) return false;
-	((LogPanel*)m_EditorPanels[0])->AddLogMessage(event.GetMessage());
+	for (const auto& [name, panel] : m_EditorPanels) {
+		if (strcmp(name, "Log") == 0) {
+			((LogPanel*)panel)->AddLogMessage(event.GetMessage());
+		}
+	}
 	return false;
 }
 
-void EditorLayer::PushEditorPanel(Penelope::ImGuiPanel* panel) {
-	m_EditorPanels.emplace_back(panel);
+template<typename PanelClass>
+PanelClass* EditorLayer::PushEditorPanel(const char* name) {
+	m_EditorPanels.emplace(name, new PanelClass(name));
+	return (PanelClass*)m_EditorPanels[name];
 }
-void EditorLayer::PopEditorPanel(Penelope::ImGuiPanel* panel) {
-	auto it = std::find(m_EditorPanels.begin(), m_EditorPanels.end(), panel);
-	if (it != m_EditorPanels.end()) {
-		delete *(it);
-		m_EditorPanels.erase(it);
+
+void EditorLayer::PopEditorPanel(Penelope::ImGuiPanel* inPanel) {
+	for (const auto& [name, panel] : m_EditorPanels) {
+		if (panel == inPanel) {
+			delete panel;
+			m_EditorPanels.erase(name);
+		}
 	}
 
 }

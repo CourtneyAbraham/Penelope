@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Penelope/Window.hpp"
+#include "Penelope/Renderer/GraphicsContext.hpp"
 
 #include <GLFW/glfw3.h>
 
@@ -26,6 +27,8 @@ namespace Penelope {
 		virtual void Shutdown();
 
 		GLFWwindow* m_Window;
+
+		GraphicsContext* m_Context;
 
 		struct WindowData {
 			std::string Title;

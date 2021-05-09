@@ -2,9 +2,7 @@
 
 #include "WindowsWindow.hpp"
 #include "Penelope/Events/AllEvents.hpp"
-
-#include <Glad/glad.h>
-
+#include "Platforms/OpenGL/OpenGLContext.hpp"
 
 namespace Penelope {
 	static bool s_GLFWInitialised = false;
@@ -45,10 +43,9 @@ namespace Penelope {
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		m_Window = glfwCreateWindow(properties.Width, properties.Height, properties.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 
-		PN_CORE_ASSERT(status, "Failed to initialise Glad!");
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
@@ -136,7 +133,7 @@ namespace Penelope {
 
 	void WindowsWindow::OnUpdate() {
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled) {

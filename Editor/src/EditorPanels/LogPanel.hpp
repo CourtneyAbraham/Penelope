@@ -35,7 +35,7 @@ private:
 	std::vector<Penelope::LogMessageInfo> m_LogMessages;
 
 	std::unordered_map<Penelope::LogLevel, ImVec4> LogColors = {
-		{Penelope::LogLevel::LEVEL_TRACE,    ImVec4(0.8f, 0.8f, 0.8f, 1.0f)},
+		{Penelope::LogLevel::LEVEL_TRACE,    ImVec4(0.6f, 0.6f, 0.6f, 1.0f)},
 		{Penelope::LogLevel::LEVEL_INFO,     ImVec4(1.0f, 1.0f, 1.0f, 1.0f)},
 		{Penelope::LogLevel::LEVEL_WARN,     ImVec4(1.0f, 1.0f, 0.6f, 1.0f)},
 		{Penelope::LogLevel::LEVEL_ERROR,    ImVec4(1.0f, 0.0f, 0.0f, 1.0f)},

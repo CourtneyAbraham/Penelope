@@ -10,7 +10,7 @@ public:
 	EditorLayer() : Layer("Editor") { }
 
 	~EditorLayer() {
-		for (Penelope::ImGuiPanel* panel : m_EditorPanels) {
+		for (const auto& [name, panel] : m_EditorPanels) {
 			delete panel;
 		}
 	}
@@ -23,12 +23,14 @@ public:
 
 	void OnEvent(Penelope::Event& event) override;
 
-	void PushEditorPanel(Penelope::ImGuiPanel* panel);
+	template<class PanelClass>
+	PanelClass* PushEditorPanel(const char* name);
+
 	void PopEditorPanel(Penelope::ImGuiPanel* panel);
 
 private:
 	std::unordered_map<const char*, ImGuiID> m_DockingIDs;
-	std::vector<Penelope::ImGuiPanel*> m_EditorPanels;
+	std::unordered_map<const char*, Penelope::ImGuiPanel*> m_EditorPanels;
 
 	std::vector<Penelope::LogMessageInfo> m_LogMessages;
 
