@@ -14,6 +14,7 @@ IncludeDir["GLFW"] = "Penelope/vendor/GLFW/include"
 IncludeDir["Glad"] = "Penelope/vendor/Glad/include"
 IncludeDir["ImGui"] = "Penelope/vendor/ImGui"
 IncludeDir["glm"] = "Penelope/vendor/ImGui"
+IncludeDir["spdlog"] = "Penelope/vendor/spdlog/include"
 
 group "Dependencies"
 
@@ -45,11 +46,12 @@ project "Penelope"
 
 	includedirs {
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.spdlog}",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"Penelope/vendor"
 	}
 
 	links {

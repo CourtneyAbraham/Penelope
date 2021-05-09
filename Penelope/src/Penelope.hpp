@@ -11,5 +11,6 @@
 
 #include "Penelope/Log.hpp"
 #include "Penelope/ImGui/ImGuiLayer.hpp"
+#include "Penelope/ImGui/ImGuiPanel.hpp"
 
 #include "Penelope/EntryPoint.hpp"
