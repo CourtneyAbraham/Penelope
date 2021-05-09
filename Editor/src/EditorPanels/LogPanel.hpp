@@ -3,9 +3,7 @@
 class LogPanel : public Penelope::ImGuiPanel {
 public:
 
-	LogPanel(const char* name) : ImGuiPanel(name) {
-		Draw();
-	}
+	LogPanel(const char* name) : ImGuiPanel(name) {	}
 
 	void Draw() override {
 		ImGui::Begin(m_Name);

@@ -37,10 +37,9 @@ void EditorLayer::OnImGuiRender() {
 
 	ImGui::End();
 
-	LogPanel logPanel("Log");
-	PropertiesPanel propertiesPanel("Properties");
-	HierarchyPanel hierarchyPanel("Hierarchy");
-	ViewportPanel viewportPanel("Viewport");
+	for (Penelope::ImGuiPanel* panel : m_EditorPanels) {
+		panel->Draw();
+	}
 }
 
 void EditorLayer::GenerateDockingSpace() {
@@ -65,10 +64,25 @@ void EditorLayer::GenerateDockingSpace() {
 		ImGui::DockBuilderDockWindow("Viewport", m_DockingIDs["Viewport"]);
 		ImGui::DockBuilderGetNode(m_DockingIDs["Viewport"])->LocalFlags |= ImGuiDockNodeFlags_HiddenTabBar;
 		ImGui::DockBuilderFinish(dockspaceID);
+
+		PushEditorPanel(new PropertiesPanel("Properties"));
+		PushEditorPanel(new LogPanel("Log"));
+		PushEditorPanel(new HierarchyPanel("Hierarchy"));
+		PushEditorPanel(new ViewportPanel("Viewport"));
 	}
 }
 
 void EditorLayer::OnEvent(Penelope::Event& event) {
+}
+
+void EditorLayer::PushEditorPanel(Penelope::ImGuiPanel* panel) {
+	m_EditorPanels.emplace_back(panel);
+}
+void EditorLayer::PopEditorPanel(Penelope::ImGuiPanel* panel) {
+	auto it = std::find(m_EditorPanels.begin(), m_EditorPanels.end(), panel);
+	if (it != m_EditorPanels.end()) {
+		m_EditorPanels.erase(it);
+	}
 }
 
 void EditorLayer::NewPanelDock(const char* name, ImGuiID* id, ImGuiDir split_dir, float sizeRatio) {

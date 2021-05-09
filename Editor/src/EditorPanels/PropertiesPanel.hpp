@@ -3,9 +3,7 @@
 class PropertiesPanel : public Penelope::ImGuiPanel {
 public:
 
-	PropertiesPanel(const char* name) : ImGuiPanel(name) {
-		Draw();
-	}
+	PropertiesPanel(const char* name) : ImGuiPanel(name) { }
 
 	void Draw() override {
 		ImGui::Begin(m_Name);

@@ -3,6 +3,7 @@
 #include <imgui/imgui.h>
 
 namespace Penelope {
+
 	class ImGuiPanel {
 	public:
 		ImGuiPanel(const char* name) : m_Name(name) {}

@@ -5,9 +5,7 @@
 class ViewportPanel : public Penelope::ImGuiPanel {
 public:
 
-	ViewportPanel(const char* name) : ImGuiPanel(name) {
-		Draw();
-	}
+	ViewportPanel(const char* name) : ImGuiPanel(name) { }
 
 	void Draw() override {
 		ImGui::Begin(m_Name);
