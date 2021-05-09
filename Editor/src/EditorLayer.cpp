@@ -81,6 +81,7 @@ void EditorLayer::PushEditorPanel(Penelope::ImGuiPanel* panel) {
 void EditorLayer::PopEditorPanel(Penelope::ImGuiPanel* panel) {
 	auto it = std::find(m_EditorPanels.begin(), m_EditorPanels.end(), panel);
 	if (it != m_EditorPanels.end()) {
+		delete *(it);
 		m_EditorPanels.erase(it);
 	}
 }
