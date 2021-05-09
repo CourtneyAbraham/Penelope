@@ -6,7 +6,7 @@ namespace Penelope {
 
 	class ImGuiPanel {
 	public:
-		ImGuiPanel(const char* name) : m_Name(name) {}
+		ImGuiPanel(const char* name) : m_Name(name) { PN_TRACE("Created panel: {0}", m_Name); }
 		ImGuiPanel() = delete;
 		~ImGuiPanel() = default;
 
