@@ -1,20 +1,20 @@
 #include "pnpch.hpp"
 
-#include "Shader.hpp"
+#include "VertexBuffer.hpp"
 
 #include "Penelope/Renderer/Renderer.hpp"
-#include "Platforms/OpenGL/OpenGLShader.hpp"
+#include "Platforms/OpenGL/OpenGLVertexBuffer.hpp"
 
 namespace Penelope {
 
-	Shader* Shader::Create(const std::string& vertexSource, const std::string& fragmentSource) {
+	VertexBuffer* VertexBuffer::Create(float* vertices, size_t size) {
 		switch (Renderer::GetAPI()) {
 			case RenderAPI::None: {
 				PN_CORE_ASSERT(false, "RenderAPI::None is not currently supported");
 				return nullptr;
 			}
 			case RenderAPI::OpenGL: {
-				return new OpenGLShader(vertexSource, fragmentSource);
+				return new OpenGLVertexBuffer(vertices, size);
 			}
 			default: {
 				PN_CORE_ASSERT(false, "Unknown Render API");

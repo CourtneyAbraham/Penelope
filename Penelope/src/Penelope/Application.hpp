@@ -6,6 +6,8 @@
 #include "Penelope/LayerStack.hpp"
 #include "Penelope/ImGui/ImGuiLayer.hpp"
 #include "Penelope/Renderer/Shader.hpp"
+#include "Penelope/Renderer/VertexBuffer.hpp"
+#include "Penelope/Renderer/IndexBuffer.hpp"
 
 namespace Penelope {
 
@@ -37,8 +39,10 @@ namespace Penelope {
 
 		static Application* s_Instance;
 
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		uint32_t m_VertexArray;
 
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 		std::unique_ptr<Shader> m_Shader;
 	};
 

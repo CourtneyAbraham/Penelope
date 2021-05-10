@@ -1,20 +1,20 @@
 #include "pnpch.hpp"
 
-#include "Shader.hpp"
+#include "IndexBuffer.hpp"
 
 #include "Penelope/Renderer/Renderer.hpp"
-#include "Platforms/OpenGL/OpenGLShader.hpp"
+#include "Platforms/OpenGL/OpenGLIndexBuffer.hpp"
 
 namespace Penelope {
 
-	Shader* Shader::Create(const std::string& vertexSource, const std::string& fragmentSource) {
+	IndexBuffer* IndexBuffer::Create(uint32_t* indices, size_t count) {
 		switch (Renderer::GetAPI()) {
 			case RenderAPI::None: {
 				PN_CORE_ASSERT(false, "RenderAPI::None is not currently supported");
 				return nullptr;
 			}
 			case RenderAPI::OpenGL: {
-				return new OpenGLShader(vertexSource, fragmentSource);
+				return new OpenGLIndexBuffer(indices, count);
 			}
 			default: {
 				PN_CORE_ASSERT(false, "Unknown Render API");
