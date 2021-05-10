@@ -1,8 +1,6 @@
 
 #include "EditorLayer.hpp"
 #include "Penelope.hpp"
-#include <iostream>
-#include <string>
 
 #include <ImGui\imgui_internal.h>
 #include "EditorPanels/AllEditorPanels.hpp"
