@@ -103,7 +103,15 @@ void EditorLayer::PopEditorPanel(Penelope::ImGuiPanel* inPanel) {
 			m_EditorPanels.erase(name);
 		}
 	}
+}
 
+void EditorLayer::PopEditorPanel(const char* inName) {
+	for (const auto& [name, panel] : m_EditorPanels) {
+		if (strcmp(name, inName) == 0) {
+			delete panel;
+			m_EditorPanels.erase(name);
+		}
+	}
 }
 
 void EditorLayer::NewPanelDock(const char* name, ImGuiID* id, ImGuiDir split_dir, float sizeRatio) {

@@ -27,6 +27,7 @@ public:
 	PanelClass* PushEditorPanel(const char* name);
 
 	void PopEditorPanel(Penelope::ImGuiPanel* panel);
+	void PopEditorPanel(const char* name);
 
 private:
 	std::unordered_map<const char*, ImGuiID> m_DockingIDs;
