@@ -5,10 +5,9 @@
 
 namespace Penelope {
 
-	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, size_t count) : m_Count(count){
+	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, size_t count) : m_Count(count) {
 		glCreateBuffers(1, &m_RendererID);
-		Bind();
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(uint32_t), indices, GL_STATIC_DRAW);
+		glNamedBufferData(m_RendererID, count * sizeof(uint32_t), indices, GL_STATIC_DRAW);
 	}
 
 	OpenGLIndexBuffer::~OpenGLIndexBuffer() {

@@ -7,8 +7,7 @@ namespace Penelope {
 
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, size_t size) {
 		glCreateBuffers(1, &m_RendererID);
-		Bind();
-		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
+		glNamedBufferData(m_RendererID, size, vertices, GL_STATIC_DRAW);
 	}
 
 	OpenGLVertexBuffer::~OpenGLVertexBuffer() {
