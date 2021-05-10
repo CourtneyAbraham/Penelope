@@ -35,6 +35,8 @@ namespace Penelope {
 		LayerStack m_LayerStack;
 
 		static Application* s_Instance;
+
+		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
 	};
 
 	// To be define by client

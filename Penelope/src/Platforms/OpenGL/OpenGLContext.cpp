@@ -14,6 +14,8 @@ namespace Penelope {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		PN_CORE_ASSERT(status, "Failed to initialise Glad!");
+
+		PN_CORE_INFO("OpenGL Renderer: {0}", glGetString(GL_RENDERER));
 	}
 
 	void OpenGLContext::SwapBuffers() {
