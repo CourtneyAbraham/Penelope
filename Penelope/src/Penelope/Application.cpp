@@ -47,7 +47,27 @@ namespace Penelope {
 		};
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
+		std::string vertexSource = R"glsl(
+			#version 460 core
+
+			layout (location = 0) in vec3 aPos;
+
+			void main(){
+				gl_Position = vec4(aPos, 1.0);
+
+			}
+		)glsl";
+		std::string fragmentSource = R"glsl(
+			#version 460 core
+
+			out vec4 FragColor;
+
+			void main(){
+				FragColor = vec4(1);
+			}
+		)glsl";
 		// Shader
+		m_Shader = std::make_unique<Shader>(vertexSource, fragmentSource);
 	}
 	Application::~Application() {
 
@@ -83,6 +103,7 @@ namespace Penelope {
 			glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 
+			m_Shader->Bind();
 			glBindVertexArray(m_VertexArray);
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
 
@@ -92,7 +113,7 @@ namespace Penelope {
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack) {
-				layer->OnImGuiRender();
+				//layer->OnImGuiRender();
 			}
 			m_ImGuiLayer->End();
 

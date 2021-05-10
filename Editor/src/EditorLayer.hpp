@@ -33,7 +33,7 @@ private:
 	std::unordered_map<const char*, ImGuiID> m_DockingIDs;
 	std::unordered_map<const char*, Penelope::ImGuiPanel*> m_EditorPanels;
 
-	bool OnLogMessageEvent(Penelope::LogMessageEvent event);
+	bool OnLogMessageEvent(Penelope::LogMessageEvent& event);
 
 	void NewPanelDock(const char* name, ImGuiID* id, ImGuiDir split_dir, float sizeRatio);
 };

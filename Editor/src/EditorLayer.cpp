@@ -79,7 +79,7 @@ void EditorLayer::OnEvent(Penelope::Event& event) {
 	dispatcher.Dispatch<Penelope::LogMessageEvent>(PN_BIND_EVENT_FN(EditorLayer::OnLogMessageEvent));
 }
 
-bool EditorLayer::OnLogMessageEvent(Penelope::LogMessageEvent event) {
+bool EditorLayer::OnLogMessageEvent(Penelope::LogMessageEvent& event) {
 	for (const auto& [name, panel] : m_EditorPanels) {
 		if (strcmp(name, "Log") == 0) {
 			((LogPanel*)panel)->AddLogMessage(event.GetMessage());

@@ -5,6 +5,7 @@
 #include "Penelope/Events/ApplicationEvent.hpp"
 #include "Penelope/LayerStack.hpp"
 #include "Penelope/ImGui/ImGuiLayer.hpp"
+#include "Penelope/Renderer/Shader.hpp"
 
 namespace Penelope {
 
@@ -37,6 +38,8 @@ namespace Penelope {
 		static Application* s_Instance;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+
+		std::unique_ptr<Shader> m_Shader;
 	};
 
 	// To be define by client
