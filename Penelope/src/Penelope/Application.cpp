@@ -9,6 +9,29 @@ namespace Penelope {
 
 	Application* Application::s_Instance = nullptr;
 
+	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type) {
+		switch (type) 	{
+			case Penelope::ShaderDataType::Float:
+			case Penelope::ShaderDataType::Float2:
+			case Penelope::ShaderDataType::Float3:
+			case Penelope::ShaderDataType::Float4:
+				return GL_FLOAT;
+			case Penelope::ShaderDataType::Int:
+			case Penelope::ShaderDataType::Int2:
+			case Penelope::ShaderDataType::Int3:
+			case Penelope::ShaderDataType::Int4:
+				return GL_INT;
+			case Penelope::ShaderDataType::Mat3:
+			case Penelope::ShaderDataType::Mat4:
+				return GL_FLOAT;
+			case Penelope::ShaderDataType::Bool:
+				return GL_BOOL;
+		}
+
+		PN_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		return 0;
+	}
+
 	Application::Application() {
 
 		PN_CORE_ASSERT(!s_Instance, "Application already exists!");
@@ -19,51 +42,76 @@ namespace Penelope {
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-		// Vertex Array
-		glGenVertexArrays(1, &m_VertexArray);
-		glBindVertexArray(m_VertexArray);
-
-
-		float vertices[3 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
+		float vertices[3 * 7] = {
+			-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f,
+			 0.0f,  0.5f, 0.0f,  1.0f, 0.0f, 1.0f, 1.0f
 		};
 
 		uint32_t indices[3] = {
 			0, 1, 2
 		};
 
+		// Vertex Array
+		glGenVertexArrays(1, &m_VertexArray);
+		glBindVertexArray(m_VertexArray);
+
 		// Vertex Buffer
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
+
+		BufferLayout layout = {
+			{ ShaderDataType::Float3, "aPos" },
+			{ ShaderDataType::Float4, "aColor" }
+		};
+
+		m_VertexBuffer->SetLayout(layout);
 		m_VertexBuffer->Bind();
-		
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(0);
+
+		size_t index = 0;
+		for (const auto& element : layout) {
+			glVertexAttribPointer(
+				index, 
+				element.GetComponentCount(), 
+				ShaderDataTypeToOpenGLBaseType(element.Type), 
+				element.Normailzed ? GL_TRUE : GL_FALSE, 
+				layout.GetStride(), 
+				(void*)element.Offset
+			);
+			glEnableVertexAttribArray(index);
+
+			++index;
+		}
 
 		// Index Buffer
 		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_IndexBuffer->Bind();
 
-		std::string vertexSource = R"glsl(
+		std::string vertexSource = R"(
 			#version 460 core
 
 			layout (location = 0) in vec3 aPos;
+			layout (location = 1) in vec4 aColor;
+
+			out vec4 Color;
 
 			void main(){
 				gl_Position = vec4(aPos, 1.0);
 
+				Color = aColor;
+
 			}
-		)glsl";
-		std::string fragmentSource = R"glsl(
+		)";
+		std::string fragmentSource = R"(
 			#version 460 core
 
 			out vec4 FragColor;
 
+			in vec4 Color;
+
 			void main(){
-				FragColor = vec4(1);
+				FragColor = Color;
 			}
-		)glsl";
+		)";
 
 		m_Shader.reset(Shader::Create(vertexSource, fragmentSource));
 	}
